@@ -2,7 +2,7 @@
 
 Este projeto consiste no desenvolvimento de um sistema distribuído robusto em Java para a disciplina de Programação Distribuída, projetado para demonstrar padrões fundamentais de arquitetura distribuída, como replicação de dados, consistência, escalabilidade de leitura e resiliência a falhas.
 
-O sistema é composto por múltiplos microsserviços que se comunicam via gRPC para operações internas e expõem uma API HTTP para clientes externos através de um API Gateway.
+O sistema é composto por múltiplos microsserviços que se comunicam via TCP, UDP ou gRPC para operações internas e expõem uma API HTTP para clientes externos através de um API Gateway.
 
 ---
 
@@ -48,7 +48,7 @@ O projeto implementa os seguintes padrões de arquitetura distribuída:
 | **API Gateway** | Stateless | Ponto de entrada, roteamento, discovery, health check. | 8080 | HTTP (externo) |
 | **Leader Node** | Stateful | Processar escritas (`SET`) e coordenar replicação. | 9001 | gRPC |
 | **Follower Node**| Stateful | Processar leituras (`GET`) e armazenar réplicas. | 9002, 9003...| gRPC |
-| **HTML Node** | Stateless | Servir a página de status do sistema. | 8001, 8002...| gRPC |
+| **HTML Node** | Stateless | Servir a página de status do sistema. | 9004, 9005...| gRPC |
 
 ---
 
@@ -131,4 +131,5 @@ O projeto foi validado extensivamente utilizando o Apache JMeter para simular al
 
 ### 👥 Autor  
 [Joadson Ferreira do Nascimento]
+
 
