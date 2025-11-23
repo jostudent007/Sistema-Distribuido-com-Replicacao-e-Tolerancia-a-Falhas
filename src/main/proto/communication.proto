@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+// Opções de geração de código para Java
+option java_multiple_files = true; // Gera cada mensagem e serviço em arquivos separados
+option java_package = "com.projeto1.grpc"; // Pacote Java onde o código será gerado
+option java_outer_classname = "CommunicationProto"; // Nome da classe container (não será muito usada com multiple_files=true)
+
+package communication;
+
+// Define o serviço de comunicação que será implementado pelo servidor e chamado pelo cliente.
+service CommunicationService {
+  // Define um método de chamada de procedimento remoto (RPC) chamado 'sendMessage'.
+  // Ele aceita uma 'RequestMessage' como entrada e retorna uma 'ResponseMessage'.
+  // É um RPC unário simples (uma requisição, uma resposta).
+  rpc sendMessage (RequestMessage) returns (ResponseMessage) {}
+}
+// Define a estrutura da mensagem de requisição.
+message RequestMessage {
+  // Um campo 'content' do tipo string, identificado pelo número 1.
+  // Os números são usados para identificar os campos na serialização binária.
+  string content = 1;
+}
+// Define a estrutura da mensagem de resposta.
+message ResponseMessage {
+  string content = 1;
+}
