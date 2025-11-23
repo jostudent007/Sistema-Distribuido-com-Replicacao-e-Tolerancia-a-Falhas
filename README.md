@@ -45,10 +45,10 @@ O projeto implementa os seguintes padrões de arquitetura distribuída:
 
 | Componente | Tipo | Responsabilidade | Porta Padrão | Protocolo Interno |
 | :--- | :--- | :--- | :--- | :--- |
-| **API Gateway** | Stateless | Ponto de entrada, roteamento, discovery, health check. | 8080 | HTTP (externo) |
-| **Leader Node** | Stateful | Processar escritas (`SET`) e coordenar replicação. | 9001 | gRPC |
-| **Follower Node**| Stateful | Processar leituras (`GET`) e armazenar réplicas. | 9002, 9003...| gRPC |
-| **HTML Node** | Stateless | Servir a página de status do sistema. | 9004, 9005...| gRPC |
+| **API Gateway** | Stateless | Ponto de entrada, roteamento, discovery, health check. | 8080 | TCP, UPD ou gRPC |
+| **Leader Node** | Stateful | Processar escritas (`SET`) e coordenar replicação. | 9001 | TCP, UPD ou gRPC |
+| **Follower Node**| Stateful | Processar leituras (`GET`) e armazenar réplicas. | 9002, 9003...| TCP, UPD ou gRPC |
+| **HTML Node** | Stateless | Servir a página de status do sistema. | 9004, 9005...| TCP, UPD ou gRPC |
 
 ---
 
@@ -131,5 +131,6 @@ O projeto foi validado extensivamente utilizando o Apache JMeter para simular al
 
 ### 👥 Autor  
 [Joadson Ferreira do Nascimento]
+
 
 
